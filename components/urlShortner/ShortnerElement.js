@@ -1,94 +1,173 @@
 import styled from "styled-components";
 // Shorten the url Input and Button
 export const ShortenerContainer = styled.div`
+  background-color: #eff1f7;
+  position: relative;
+  width: 100%;
+  min-height: 10rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  width: 100%;
-
-  background-color: #ece9f2;
+  padding: 7rem 0 2rem;
+  flex-direction: column;
+  gap: 2rem;
 `;
 export const FormContainer = styled.form`
-  width: 85%;
-  margin: auto;
-  height: 150px;
-  margin-top: -50px;
-  margin-bottom: 30px;
-  padding: 40px 80px;
-  align-items: center;
-  text-align: center;
   display: flex;
-  gap: 40px;
-  z-index: 5;
-  position: relative;
-  overflow: auto;
-  object-fit: cover;
-  background-image: url(/assets/Meteor.svg);
+  position: absolute;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto 5rem;
+  top: -5rem;
+  height: 10rem;
+  background: url("/assets/Meteor.svg");
+  background-size: cover;
+  background-position: center;
+  flex-direction: row;
+  z-index: 1;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
 `;
 
 export const UrlInput = styled.input`
-  width: 75%;
-  height: 60px;
+  position: relative;
+  display: flex;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  width: 80%;
+  max-width: 75%;
   border-radius: 8px;
-  padding: 10px 30px;
-  font-size: 18px;
+  border: 3px solid ${({ theme }) => theme.colors.Red};
   outline: none;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 90%;
+  }
   &::placeholder {
-    color: red;
+    color: #f1b0b7;
   }
 `;
 
 export const ShortnerButton = styled.button`
-  padding: 10px 20px;
-  height: 60px;
-  width: 200px;
-  border: none;
+  height: 40%;
   border-radius: 8px;
-  font-size: 18px;
-  color: #fff;
-  background-color: #2acfcf;
+  color: white;
+  background-color: ${({ theme }) => theme.colors.Cyan};
+  white-space: nowrap;
+  padding: 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  text-decoration: none;
   &:hover {
-    background-color: #69d1d1;
+    background-color: #9be3e2;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 90%;
+    margin-top: 1rem;
   }
 `;
 
 // Shorten the url Output and copy to clipboard
 
 export const ShortnerCard = styled.div`
-  width: 80%;
-  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
   background-color: white;
-  border-radius: 8px;
-  line-height: 1;
-  margin: auto;
-  margin: 10px 0;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 85%;
+  max-width: 1500px;
+  align-items: center;
+  height: 4rem;
+  border-radius: 10px;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    height: 10rem;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
-export const UrlShortnerInputUrl = styled.div``;
-export const UrlShortnerIUrl = styled.p``;
-export const UrlShortnerOutputUrl = styled.div`
+export const OrignalUrl = styled.p`
+  font-size: 1.2rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #444242;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  @media screen and (max-width: 1200px) {
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 50%;
+    padding-inline: 1rem;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    border-bottom: 2px solid #e7e6e6;
+    font-weight: 500;
+    width: 100%;
+  }
+`;
+export const ShortedUrlContainer = styled.div`
   display: flex;
-  gap: 30px;
+  width: 30%;
+  justify-content: flex-end;
+  gap: 0 1.5rem;
+  align-items: center;
+  padding-inline: 1.5rem;
+
+  @media screen and (max-width: 1200px) {
+    width: 45%;
+    padding-inline: 1rem;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
 `;
 
-export const UrlShortnerOUrl = styled.p`
+export const ShortedUrl = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
   color: #2acfcf;
-  font-size: 18px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 `;
 
 export const CopyButton = styled.button`
-  color: white;
-  border: none;
-  line-height: 1;
-  font-weight: 700;
-  padding: 10px 30px;
+  display: flex;
   border-radius: 8px;
+  color: white;
+  background-color: #2acfcf;
+  white-space: nowrap;
+  padding: 10px 30px;
   font-size: 18px;
-  background-color: ${(props) => (props.links ? "#3b3054" : "#2acfcf")};
+  cursor: pointer;
+  outline: none;
+  border: none;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #9be3e2;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;

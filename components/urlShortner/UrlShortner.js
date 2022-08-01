@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import {
   ShortenerContainer,
   ShortnerButton,
   FormContainer,
   UrlInput,
-  UrlShortnerInputUrl,
-  UrlShortnerIUrl,
-  UrlShortnerOUrl,
+  OrignalUrl,
+  ShortedUrl,
   ShortnerCard,
-  UrlShortnerOutputUrl,
+  ShortedUrlContainer,
   CopyButton,
 } from "./ShortnerElement";
 
 const UrlShortner = () => {
+  const [loading, setLoading] = useState(false);
   const [longUrl, setLongUrl] = useState("");
-
   const [shortUrlData, setShortUrlData] = useState([]);
-
-  const [links, setLinks] = useState(false);
   function urlValidator(url) {
     return /^(http|https):\/\/[^ "]+$/.test(url);
   }
 
+  const handleCopy = ({ target }, full_short_link) => {
+    navigator.clipboard.writeText(full_short_link);
+    if (target.innerText == "Copy") {
+      target.style.backgroundColor = "#3a3053";
+      target.innerText = "Copied!";
+    }
+  };
   const ShortenHandler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       if (!urlValidator(longUrl)) {
         alert("Please enter a valid url.");
         return false;
@@ -44,6 +50,8 @@ const UrlShortner = () => {
     } catch (error) {
       alert(error.response.data.error);
     }
+    setLongUrl("");
+    setLoading(false);
   };
 
   return (
@@ -56,35 +64,27 @@ const UrlShortner = () => {
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
           />
-          <ShortnerButton type="submit">Shorten It!</ShortnerButton>
+          <ShortnerButton type="submit">
+            {loading ? "Shortening...." : "Shorten It!"}
+          </ShortnerButton>
         </FormContainer>
-        {shortUrlData && (
-          <>
-            {shortUrlData?.map((item, id) => (
-              <>
-                <ShortnerCard key={id}>
-                  <UrlShortnerInputUrl>
-                    <UrlShortnerIUrl>{item.original_link}</UrlShortnerIUrl>
-                  </UrlShortnerInputUrl>
-                  <UrlShortnerOutputUrl>
-                    <UrlShortnerOUrl id="copyShort">
-                      {item.full_short_link}
-                    </UrlShortnerOUrl>
-                    <CopyButton
-                      links={links}
-                      onClick={() =>
-                        navigator.clipboard.writeText(item.full_short_link) &&
-                        setLinks(!links)
-                      }
-                    >
-                      {links ? "Copied!" : "Copy"}
-                    </CopyButton>
-                  </UrlShortnerOutputUrl>
-                </ShortnerCard>
-              </>
-            ))}
-          </>
-        )}
+
+        {shortUrlData &&
+          shortUrlData?.map(({ original_link, full_short_link }) => (
+            <ShortnerCard key={uuidv4()}>
+              <OrignalUrl>{original_link}</OrignalUrl>
+              <ShortedUrlContainer>
+                <ShortedUrl>{full_short_link}</ShortedUrl>
+                <CopyButton
+                  onClick={(e) => {
+                    handleCopy(e, full_short_link);
+                  }}
+                >
+                  Copy
+                </CopyButton>
+              </ShortedUrlContainer>
+            </ShortnerCard>
+          ))}
       </ShortenerContainer>
     </>
   );

@@ -4,6 +4,7 @@ import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/hero/Hero";
 import UrlShortner from "../components/urlShortner/UrlShortner";
 import AdvStats from "../components/features/AdvStats";
+import Footer from "../components/footer/Footer";
 export default function Home() {
   return (
     <>
@@ -22,6 +23,7 @@ export default function Home() {
         <UrlShortner />
         <AdvStats />
       </main>
+      <Footer />
     </>
   );
 }

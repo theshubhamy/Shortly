@@ -1,23 +1,46 @@
 import styled from "styled-components";
 
-export const HeroPageContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 `;
-export const HeroPageTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: 900;
-  padding: 0 0.1rem;
-  line-height: 1;
-  @media (min-width: 768px) {
-    font-size: 6rem;
-    padding: 0 4rem;
-    font-weight: bolder;
-    margin-top: -0.5rem;
-    margin-bottom: 0rem;
-    line-height: 1.2;
+export const Heading = styled.div`
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  padding: 0 1rem;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    order: 1;
+  }
+`;
+export const Title = styled.h1`
+  margin: 0;
+  text-align: center;
+  padding: 2rem;
+  color: ${({ theme }) => theme.colors.VeryDarkBlue};
+  font-size: 5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 4rem;
+  }
+  @media screen and (max-width: 560px) {
+    font-size: 3rem;
+  }
+`;
+export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2rem;
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+    margin-bottom: 2rem;
+    order: 1;
   }
 `;
