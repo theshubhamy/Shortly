@@ -7,7 +7,7 @@ import {
   Logo,
   FooterItems,
   FooterHead,
-  FooterMenu1,
+  FooterMenu,
   FooterList,
   FooterLinks,
   LinksLogo,
@@ -68,25 +68,25 @@ const Footer = () => {
           </FooterLinks>
         </LinksContainer>
         <FooterItems>
-          <FooterMenu1>
+          <FooterMenu>
             <FooterHead>Features</FooterHead>
             <FooterList>Link Shortning</FooterList>
             <FooterList>Branded Links</FooterList>
             <FooterList>Analytics</FooterList>
-          </FooterMenu1>
-          <FooterMenu1>
+          </FooterMenu>
+          <FooterMenu>
             <FooterHead>Resources</FooterHead>
             <FooterList>Blog</FooterList>
             <FooterList>Developers</FooterList>
             <FooterList>Support</FooterList>
-          </FooterMenu1>
-          <FooterMenu1>
+          </FooterMenu>
+          <FooterMenu>
             <FooterHead>Company</FooterHead>
             <FooterList>About</FooterList>
             <FooterList>Our Team</FooterList>
             <FooterList>Carrers</FooterList>
             <FooterList>Contacts</FooterList>
-          </FooterMenu1>
+          </FooterMenu>
         </FooterItems>
       </MainFooter>
     </FooterContainer>

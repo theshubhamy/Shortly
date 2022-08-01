@@ -92,7 +92,6 @@ export const CardContainer = styled.div`
   z-index: 20;
   border-radius: 8px;
   transform: translateY(-3rem);
-  transition: all 0.2s;
 
   @media screen and (max-width: 768px) {
     display: flex;

@@ -117,7 +117,7 @@ export const FooterHead = styled.h2`
   }
 `;
 
-export const FooterMenu1 = styled.div`
+export const FooterMenu = styled.div`
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -165,8 +165,7 @@ export const LinksLogo = styled.div`
   display: flex;
   color: white;
   font-size: 1.5rem;
-
   &:hover {
-    color: ${({ theme }) => theme.colors.Cyan};
+    color: #2acfcf;
   }
 `;
