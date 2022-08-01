@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../styles/Theme";
 /*****components********/
 import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/hero/Hero";
@@ -7,7 +9,7 @@ import AdvStats from "../components/features/AdvStats";
 import Footer from "../components/footer/Footer";
 export default function Home() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Head>
         <title>Shortly</title>
         <meta
@@ -24,6 +26,6 @@ export default function Home() {
         <AdvStats />
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
