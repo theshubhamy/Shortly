@@ -34,18 +34,18 @@ const UrlShortner = () => {
       setLoading(true);
       if (!urlValidator(longUrl)) {
         alert("Please enter a valid url.");
-        return false;
-      }
-      const response = await axios.post(
-        `https://api.shrtco.de/v2/shorten?url=${longUrl}`
-      );
-      if (response.status === 201) {
-        let result = response?.data?.result;
-        setShortUrlData((prev) => {
-          return [result, ...prev];
-        });
       } else {
-        alert(response.data.error);
+        const response = await axios.post(
+          `https://api.shrtco.de/v2/shorten?url=${longUrl}`
+        );
+        if (response.status === 201) {
+          let result = response?.data?.result;
+          setShortUrlData((prev) => {
+            return [result, ...prev];
+          });
+        } else {
+          alert(response.data.error);
+        }
       }
     } catch (error) {
       alert(error.response.data.error);
